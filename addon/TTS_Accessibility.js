@@ -143,17 +143,26 @@ Window_Selectable.prototype.select = function(index) {
     }
 };
 
-// ... 頂部全域 Utterance、cleanText、executeBlindSpeak、選單以及變數 / 對話框攔截代碼完全保留 ...
+// ==================================================
+// 🛡️ 唯一安全換場防線：記錄上一次的地圖 ID
+// ==================================================
+window.raylex_lastMapId = 0;
 
-// 監聽劇情事件結束生命週期
-const _original_Game_Interpreter_clearSpeakers = Game_Interpreter.prototype.clear;
-Game_Interpreter.prototype.clear = function() {
-    _original_Game_Interpreter_clearSpeakers.apply(this, arguments);
-    
-    // 當事件或場景徹底結束清空時，洗乾淨專屬 raylex_ 安全防空洞內的點名冊
-    if (window.raylex_currentSpeakers && window.raylex_currentSpeakers.length > 0) {
-        console.log("🧹 [raylex_TTS] 劇情場景切換，清空解碼角色名單。");
-        window.raylex_currentSpeakers = [];
+const _original_Window_Message_startMessage_mapCheck = Window_Message.prototype.startMessage;
+Window_Message.prototype.startMessage = function() {
+    _original_Window_Message_startMessage_mapCheck.apply(this, arguments);
+
+    // 檢查全域地圖物件是否已經就緒
+    if (typeof $gameMap !== 'undefined' && typeof $gameMap.mapId === 'function') {
+        let currentMapId = $gameMap.mapId();
+
+        // 🎯 鋼鐵防線：只有當玩家「真正換地圖切換場景」時，才允許清空點名冊！
+        // 在同一個地圖的連續劇情、選單或翻頁期間，名單只加不減，徹底打破惡魔循環！
+        if (currentMapId !== window.raylex_lastMapId) {
+            console.log(`🧹 [raylex_TTS] 偵測到玩家切換新地圖 (Map ID: ${window.raylex_lastMapId} -> ${currentMapId})，安全清空在場角色名單。`);
+            window.raylex_currentSpeakers = [];
+            window.raylex_lastMapId = currentMapId; // 更新地圖 ID 指標
+        }
     }
 };
 
