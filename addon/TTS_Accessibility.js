@@ -76,7 +76,7 @@ const _original_Game_Variables_setValue = Game_Variables.prototype.setValue;
 Game_Variables.prototype.setValue = function(variableId, value) {
     _original_Game_Variables_setValue.apply(this, arguments);
 
-    if (typeof value === 'string' && value.includes('.')) {
+    if (typeof value === 'string' && value.match(/^([A-Z][a-z]){2,3}\./)) {
         let dotIndex = value.indexOf('.');
         let prefix = value.substring(0, dotIndex);
 
