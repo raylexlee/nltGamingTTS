@@ -75,14 +75,17 @@ function executeBlindSpeak(processedText) {
 const _original_Game_Variables_setValue = Game_Variables.prototype.setValue;
 Game_Variables.prototype.setValue = function(variableId, value) {
     _original_Game_Variables_setValue.apply(this, arguments);
-
-    if (typeof value === 'string' && value.match(/^([A-Z][a-z]){2,3}\./)) {
+    if ((variableId === 21)  && typeof value === 'string' && value.match(/^([A-Z][a-z]){2,3}/)) {
         let dotIndex = value.indexOf('.');
         let prefix = value.substring(0, dotIndex);
-
-        let charName = typeof resolveCharacterName === 'function' ? resolveCharacterName(prefix) : "Unknown";
-        
-        if (charName !== "Unknown" && typeof getJustInTimeVoice === 'function') {
+        console.log('[qming] Raw Prefix : ', prefix)
+    //    const charNames = window.raylex_currentSpeakers.filter(v => v[0] === prefix[0])
+    //                                                   .filter(v => v.includes(prefix[1]))
+    //                                                   .sort()
+    //    console.log('[qming] Matching Names : ', charNames)
+    //    charName = charName[0];       
+        let charName = typeof resolveCharacterName === 'function' ? resolveCharacterName(prefix) : "";
+        if (charName && typeof getJustInTimeVoice === 'function') {
             const config = getJustInTimeVoice(charName);
             if (config && config.voice) {
                 window.currentActiveVoice = config.voice;

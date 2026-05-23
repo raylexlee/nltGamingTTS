@@ -72,18 +72,11 @@ async function initNTLperson(gametag) {
 // ==================================================
 
 function resolveCharacterName(fullPrefix) {
-    if (!fullPrefix || typeof fullPrefix !== 'string' || fullPrefix.length < 2) return "Unknown";
-    
+    console.log('[qming] Raw Prefix', fullPrefix)   
     window.raylex_currentSpeakers = window.raylex_currentSpeakers || [];
 
-    // 1. 精準字串還原修復 (擷取正規表示式的第一個匹配字串)
-    let cleanPrefixMatch = fullPrefix.match(/[A-Z][a-z][A-Z][a-z]$/);
-    let targetPrefix = (cleanPrefixMatch && cleanPrefixMatch) ? cleanPrefixMatch[0] : fullPrefix;
-    let shortHand = targetPrefix.substring(0, 2).toLowerCase();
+    let shortHand = fullPrefix.substring(0, 2).toLowerCase();
 
-    // 排除衣服表情等環境噪音
-    const uiNoise = ['fe', 'fl', 'fr', 'hl', 'ml', 'op', 'sh', 'wo', 'am', 'vo'];
-    if (uiNoise.includes(shortHand)) return "Unknown";
 
     // 2. 鋼鐵防線：利用智慧型智慧指紋比對與名單【完全相等比較】進行精準性別分流
     switch (shortHand) {
@@ -109,93 +102,26 @@ function resolveCharacterName(fullPrefix) {
         case 'ji': return "Jim";
         case 'jo': return "Joey";
         case 'ju': return "Judy";
+        case 'ml': return "Madalyn";
         
         // 🚨 【Alia 與 Albert 的鋼鐵全等分流】
-        case 'al': 
-            // 情況 A：前綴裡死死寫著 Albert，或是點名冊裡有 Albert 且沒有 Alia
-            if (fullPrefix.toLowerCase().includes("albert") || 
-               (window.raylex_currentSpeakers.includes("Albert") && !window.raylex_currentSpeakers.includes("Alia"))) {
-                return "Albert";
-            }
-            // 情況 B：其餘 99% 的情況（包括名單裡同時有兩者、或只有 Alia），全面回傳常駐女主 Alia 女聲
-            return "Alia";
+        case 'al': return "Alia";
             
         // 🚨 【Evie 與 Evil 的鋼鐵全等分流】
-        case 'ev': 
-            if (fullPrefix.toLowerCase().includes("evil") || 
-               (window.raylex_currentSpeakers.includes("Evil") && !window.raylex_currentSpeakers.includes("Evie"))) {
-                return "Evil";
-            }
-            return "Evie";
+        case 'ev': return "Evie";
             
         // 🚨 【Madalyn 與 Maddy 的鋼鐵全等分流】
-        case 'ma': 
-            if (fullPrefix.includes("Succ") || fullPrefix.includes("St") || fullPrefix.includes("Strip") || 
-               (window.raylex_currentSpeakers.includes("Maddy") && !window.raylex_currentSpeakers.includes("Madalyn"))) {
-                return "Maddy";
-            }
-            return "Madalyn";
+        case 'ma': return "Madalyn";
             
         // 🚨 【Kaley 與 Kat 的鋼鐵全等分流】
-        case 'ka': 
-            if (fullPrefix.toLowerCase().startsWith("kat") || 
-               (window.raylex_currentSpeakers.includes("Kat") && !window.raylex_currentSpeakers.includes("Kaley"))) {
-                return "Kat";
-            }
-            return "Kaley";
+        case 'ka': return "Kaley";
             
         default:
             // 備用 Fallback 兜底
-            if (window.nltPerson) {
-                let dynamicFind = Object.keys(window.nltPerson).find(name => name.toLowerCase().startsWith(shortHand));
-                if (dynamicFind) return dynamicFind;
-            }
-            return "Unknown";
+            return "";
     }
 }
 
-// 輔助函數：專職負責將純雙字母縮寫轉回大類名字
-function getBaseCharFromShort(shortHand, fullPrefix) {
-    let s = shortHand.toLowerCase();
-    const uiNoise = ['fe', 'fl', 'fr', 'hl', 'ml', 'op', 'sh', 'wo', 'am', 'vo'];
-    if (uiNoise.includes(s)) return "Unknown";
-
-    switch (s) {
-        case 'he': return "Hero";
-        case 'di': return "Diana";
-        case 'cr': return "Clare";
-        case 'ta': return "Tasha";
-        case 'ja': return "Janet";
-        case 'em': return "Emily";
-        case 'ha': return "Hannah";
-        case 'ba': return "Bancroft";
-        case 'mi': return "Michael";
-        case 'na': return "Naomi";
-        case 'pr': return "Pricia";
-        case 'sa': return "Sam";
-        case 'so': return "Sofia";
-        case 'pa': return "Paul";
-        case 'sm': return "Smithfield";
-        case 'vl': return "Vlad";
-        case 'du': return "Duncan";
-        case 'co': return "Corn";
-        case 'br': return "Brad";
-        case 'ji': return "Jim";
-        case 'jo': return "Joey";
-        case 'ju': return "Judy";
-        case 'al': 
-            if (fullPrefix.includes("Bi") || fullPrefix.includes("Li") || fullPrefix.includes("Nu") || fullPrefix.includes("Da")) return "Alia";
-            return "Albert";
-        case 'ma': 
-            if (fullPrefix.includes("Succ") || fullPrefix.includes("St") || fullPrefix.includes("Strip")) return "Maddy";
-            return "Madalyn";
-        case 'ka': 
-            if (fullPrefix.toLowerCase().startsWith("kat")) return "Kat";
-            return "Kaley";
-        default:
-            return "Unknown";
-    }
-}
 
 // 3. Just-In-Time 語音物件精準比較綁定
 function getJustInTimeVoice(charName) {
