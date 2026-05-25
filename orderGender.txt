@@ -18,7 +18,7 @@ Goon Male
 Hannah Female
 Heather Female
 Henchman Male
-Henchwoman Male
+Henchwoman Female
 Henry Male
 H Male
 Hood Male
