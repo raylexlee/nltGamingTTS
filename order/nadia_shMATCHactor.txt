@@ -1,4 +1,4 @@
-Ab Ash
+Ab Albert 
 Am Ash
 An Aged
 Ba Bancroft
@@ -13,7 +13,8 @@ Fr Albert
 Ha Hero
 He Hero
 Hl Hero
-Ja James
+Ka Kaley
+Ja Janet
 Je Jessica
 Ma Madalyn
 Mi Michael
