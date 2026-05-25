@@ -84,7 +84,7 @@ Game_Variables.prototype.setValue = function(variableId, value) {
     //                                                   .sort()
     //    console.log('[qming] Matching Names : ', charNames)
     //    charName = charName[0];       
-        let charName = typeof resolveCharacterName === 'function' ? resolveCharacterName(prefix) : "";
+        let charName = window.nltActor[prefix.slice(0,2)];
         if (charName && typeof getJustInTimeVoice === 'function') {
             const config = getJustInTimeVoice(charName);
             if (config && config.voice) {

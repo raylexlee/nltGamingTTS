@@ -2,6 +2,7 @@
 // 📂 nltGamingTTS - voiceMap.js
 // ==================================================
 window.nltPerson = {};
+window.nltActor = {};
 window.defaultSystemVoice = null;
 window.nlt_isDatabaseLoaded = false;
 
@@ -10,15 +11,17 @@ async function initNTLperson(gametag) {
     try {
         console.log(`🎙️ [nltGamingTTS] 正在載入 ${gametag} 的語音對應表...`);
 
-        const [localRes, cloudRes] = await Promise.all([
+        const [localRes, cloudRes, actorRes] = await Promise.all([
             fetch(`addon/${gametag}PAIRwin.txt`),
-            fetch(`addon/${gametag}PAIRedge.txt`)
+            fetch(`addon/${gametag}PAIRedge.txt`),
+            fetch(`addon/${gametag}_shMATCHactor.txt`)
         ]);
 
-        if (!localRes.ok || !cloudRes.ok) throw new Error("讀取對應表檔案失敗！");
+        if (!localRes.ok || !cloudRes.ok || !actorRes.ok) throw new Error("讀取對應表檔案失敗！");
 
         const localText = await localRes.text();
         const cloudText = await cloudRes.text();
+        const actorText = await actorRes.text();
 
         // 解析本地資料 (win)
         localText.split('\n').forEach(line => {
@@ -52,6 +55,10 @@ async function initNTLperson(gametag) {
                 pitch: parseFloat(pitch) || 1.0,
                 rate: parseFloat(rate) || 1.0
             };
+        });
+        actorText.split('\n').forEach(line => {
+            const [sh, charName] = line.split(' ');
+            window.nltActor[sh] = charName
         });
 
         // 初始化 UI 預設女聲
@@ -143,7 +150,7 @@ function getJustInTimeVoice(charName) {
 // 4. 安全開機引導
 function runNadiaSafeInit() {
     if (window.nlt_isDatabaseLoaded) return;
-    initNTLperson('nadia'); // Lust Epidemic 使用時可改為 'lust'
+    initNTLperson(document.title.split(' ').at(-1).toLowerCase());
 }
 
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
