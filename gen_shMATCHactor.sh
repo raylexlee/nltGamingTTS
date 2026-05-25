@@ -1,37 +1,56 @@
 #!/bin/bash
 
-# Check if the correct argument is provided
-if [ "$1" != "order" ]; then
-    echo "Usage: $0 order"
+# 1. Check if an argument was provided
+if [ -z "$1" ]; then
+    echo "Error: Please provide a game name."
+    echo "Usage: $0 <game_name> (e.g., $0 order, $0 nadia, $0 epidemic)"
     exit 1
 fi
 
-# Define input and output files
-SHORT_FILE="orderShortName.txt"
-GENDER_FILE="orderGender.txt"
-OUTPUT_FILE="order_shMATCHactor.txt"
+# 2. Dynamically set file names based on the 1st argument
+GAME_NAME="$1"
+SHORT_FILE="${GAME_NAME}ShortName.txt"
+GENDER_FILE="${GAME_NAME}Gender.txt"
+OUTPUT_FILE="${GAME_NAME}_shMATCHactor.txt"
+
+# 3. Verify that the input files actually exist before running
+if [ ! -f "$SHORT_FILE" ] || [ ! -f "$GENDER_FILE" ]; then
+    echo "Error: Missing input files for '$GAME_NAME'."
+    echo "Make sure $SHORT_FILE and $GENDER_FILE exist in this directory."
+    exit 1
+fi
 
 # Clear output file if it exists
 > "$OUTPUT_FILE"
 
-# Process each short name
+# 4. Process the matching logic
 while read -r sh || [[ -n "$sh" ]]; do
-    # Skip empty lines
     [[ -z "$sh" ]] && continue
     
-    # Find matching actor names that start with the short name (case-insensitive)
-    # Exclude single letter actors like 'H' and 'M' by matching at least 2 letters
-    actor_line=$(grep -i "^${sh}[a-z]" "$GENDER_FILE" | head -n 1)
+    char1="${sh:0:1}"
+    char2="${sh:1:1}"
     
-    if [ -n "$actor_line" ]; then
-        # Extract just the actor name (first column)
+    # Filter actors starting with the 1st character
+    first_batch=$(grep -i "^${char1}[a-zA-Z]" "$GENDER_FILE")
+    
+    if [ -n "$first_batch" ]; then
+        # Search for 2nd character in the second position
+        actor_line=$(echo "$first_batch" | grep -i "^${char1}${char2}" | head -n 1)
+        
+        # If no exact match, pick a random actor from the first batch
+        if [ -z "$actor_line" ]; then
+            actor_line=$(echo "$first_batch" | shuf -n 1)
+        fi
+        
         actor=$(echo "$actor_line" | awk '{print $1}')
-        # Write to output file
         echo "$sh $actor" >> "$OUTPUT_FILE"
     else
-        echo "No match found for: $sh"
+        # Global fallback if no actor starts with Char1
+        actor_line=$(grep -E "^[a-zA-Z]{2,}" "$GENDER_FILE" | shuf -n 1)
+        actor=$(echo "$actor_line" | awk '{print $1}')
+        echo "$sh $actor" >> "$OUTPUT_FILE"
     fi
 done < "$SHORT_FILE"
 
-echo "Matching complete. Output saved to $OUTPUT_FILE"
+echo "Matching complete for '$GAME_NAME'. Output saved to $OUTPUT_FILE"
 

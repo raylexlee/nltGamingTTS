@@ -1,0 +1,15 @@
+// CharacterName voiceName pitch rate
+Amber           Ana             1.00    0.95   
+Andy            Andrew          1.00    0.95   
+Bancroft        Aria            1.00    1.00   
+Brad            Brian           1.00    1.00   
+Buddie          Christopher     1.00    1.05   
+Denny           Connor          1.00    0.95   
+Elizabeth       Ava             1.00    1.05   
+Katherine       Clara           1.00    0.95   
+Mendel          Eric            1.00    1.00   
+Parker          Guy             1.00    1.05   
+Simon           Liam            1.00    0.95   
+Tillman         Roger           1.00    1.00   
+Valerie         Emily           1.00    1.00   
+Violet          Emma            1.00    1.05   
