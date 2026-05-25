@@ -40,7 +40,7 @@ Yunxiao Male zh-CN cloud
 云翔 Male zh-CN-shandong cloud
 云希 Male zh-CN-sichuan cloud
 曉曼 Female zh-HK cloud
-雲龍 Female zh-HK cloud
+雲龍 Male zh-HK cloud
 曉佳 Female zh-HK cloud
 曉臻 Female zh-TW cloud
 雲哲 Male zh-TW cloud
