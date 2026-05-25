@@ -16,7 +16,7 @@ Ella            Emma            1.00    1.05
 Erica           Jenny           1.00    0.95   
 Evie            Libby           1.00    1.00   
 Goon            Roger           1.00    1.00   
-Hannah          Maisie          1.00    1.05   
+Hannah          Sonia          1.00    1.05   
 Heather         Michelle        1.00    0.95   
 Henchman        Ryan            1.00    1.05   
 Henchwoman      Natasha         1.00    1.00   
