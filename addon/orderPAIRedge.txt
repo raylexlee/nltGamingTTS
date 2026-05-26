@@ -3,7 +3,7 @@ Alia            Ana             1.00    0.95
 Andrea          Andrew          1.00    0.95   
 Arianna         Aria            1.00    1.00   
 Bancroft        Brian           1.00    1.00   
-Bobby           Christopher     1.00    1.05   
+Bobby           Thomas          1.00    1.05   
 Brian           Brian           1.00    1.00   
 Carol           Ava             1.00    1.05   
 Chloe           Clara           1.00    0.95   
@@ -20,14 +20,14 @@ Hannah          Sonia          1.00    1.05
 Heather         Michelle        1.00    0.95   
 Henchman        Ryan            1.00    1.05   
 Henchwoman      Natasha         1.00    1.00   
-Henry           Steffan         1.00    0.95   
+Henry           Thomas          1.00    0.95   
 H               Thomas          1.00    1.00   
 Hood            William         1.00    1.05   
 Jon             Andrew          0.95    0.95   
 Judge           Sonia           1.00    1.05   
 Judy            Brian           0.95    1.00   
 Kimberly        Ana             1.05    0.95   
-Larry           Christopher     0.95    1.05   
+Larry           Thomas     0.95    1.05   
 Lawyer          Connor          0.95    0.95   
 Lilith          Aria            1.05    1.00   
 Lillian         Ava             1.05    1.05   
