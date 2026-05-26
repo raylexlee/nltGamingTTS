@@ -8,7 +8,9 @@ window.systemVoiceRetryCounter = 3;
 window.currentActiveVoice = null;
 window.currentActivePitch = 1.0;
 window.currentActiveRate = 1.0;
-
+window.raylex_regex = (document.title.slice(0,4) === 'Lust') 
+    ? /^[A-Z][a-z],[a-z][a-z],[a-z]/
+    : /^[A-Z][a-z][A-Z][a-z]/ ;
 // 萬能轉義字元與 NLT 雜質清洗機
 const cleanText = function(text) {
     if (!text || text.trim().length === 0) return "";
@@ -75,10 +77,10 @@ function executeBlindSpeak(processedText) {
 const _original_Game_Variables_setValue = Game_Variables.prototype.setValue;
 Game_Variables.prototype.setValue = function(variableId, value) {
     _original_Game_Variables_setValue.apply(this, arguments);
-    if ((variableId === 21)  && typeof value === 'string' && value.match(/^([A-Z][a-z]){2,3}/)) {
+    if ((variableId === 21)  && typeof value === 'string' && value.match(window.raylex_regex)) {
         let dotIndex = value.indexOf('.');
         let prefix = value.substring(0, dotIndex);
-        console.log('[qming] Raw Prefix : ', prefix)
+        console.log('[qming] Raw Prefix : ', prefix, prefix.slice(0,2))
     //    const charNames = window.raylex_currentSpeakers.filter(v => v[0] === prefix[0])
     //                                                   .filter(v => v.includes(prefix[1]))
     //                                                   .sort()

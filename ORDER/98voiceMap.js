@@ -150,7 +150,9 @@ function getJustInTimeVoice(charName) {
 // 4. 安全開機引導
 function runNadiaSafeInit() {
     if (window.nlt_isDatabaseLoaded) return;
-    initNTLperson(document.title.split(' ').at(-1).toLowerCase());
+    const t = document.title.split(' ')
+    const tag = (t[0] === 'Lust') ? t[1] : t.at(-1);
+    initNTLperson(tag.toLowerCase());
 }
 
 if (document.readyState === 'complete' || document.readyState === 'interactive') {

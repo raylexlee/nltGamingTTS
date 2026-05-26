@@ -74,6 +74,62 @@ async function initNTLperson(gametag) {
     }
 }
 
+// ==================================================
+// 📂 nltGamingTTS - voiceMap.js (性別全等二分修正版)
+// ==================================================
+
+function resolveCharacterName(fullPrefix) {
+    console.log('[qming] Raw Prefix', fullPrefix)   
+    window.raylex_currentSpeakers = window.raylex_currentSpeakers || [];
+
+    let shortHand = fullPrefix.substring(0, 2).toLowerCase();
+
+
+    // 2. 鋼鐵防線：利用智慧型智慧指紋比對與名單【完全相等比較】進行精準性別分流
+    switch (shortHand) {
+        case 'he': return "Hero";
+        case 'di': return "Diana";
+        case 'cr': return "Clare";
+        case 'ta': return "Tasha";
+        case 'ja': return "Janet";
+        case 'em': return "Emily";
+        case 'ha': return "Hannah";
+        case 'ba': return "Bancroft";
+        case 'mi': return "Michael";
+        case 'na': return "Naomi";
+        case 'pr': return "Pricia";
+        case 'sa': return "Sam";
+        case 'so': return "Sofia";
+        case 'pa': return "Paul";
+        case 'sm': return "Smithfield";
+        case 'vl': return "Vlad";
+        case 'du': return "Duncan";
+        case 'co': return "Corn";
+        case 'br': return "Brad";
+        case 'ji': return "Jim";
+        case 'jo': return "Joey";
+        case 'ju': return "Judy";
+        case 'ml': return "Madalyn";
+        
+        // 🚨 【Alia 與 Albert 的鋼鐵全等分流】
+        case 'al': return "Alia";
+            
+        // 🚨 【Evie 與 Evil 的鋼鐵全等分流】
+        case 'ev': return "Evie";
+            
+        // 🚨 【Madalyn 與 Maddy 的鋼鐵全等分流】
+        case 'ma': return "Madalyn";
+            
+        // 🚨 【Kaley 與 Kat 的鋼鐵全等分流】
+        case 'ka': return "Kaley";
+            
+        default:
+            // 備用 Fallback 兜底
+            return "";
+    }
+}
+
+
 // 3. Just-In-Time 語音物件精準比較綁定
 function getJustInTimeVoice(charName) {
     const speaker = window.nltPerson[charName];
@@ -94,7 +150,9 @@ function getJustInTimeVoice(charName) {
 // 4. 安全開機引導
 function runNadiaSafeInit() {
     if (window.nlt_isDatabaseLoaded) return;
-    initNTLperson(document.title.split(' ').at(-1).toLowerCase());
+    const t = document.title.split(' ')
+    const tag = (t[0] === 'Lust') ? t[1] : t.at(-1);
+    initNTLperson(tag.toLowerCase());
 }
 
 if (document.readyState === 'complete' || document.readyState === 'interactive') {

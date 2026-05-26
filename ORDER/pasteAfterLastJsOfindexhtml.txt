@@ -1,3 +1,2 @@
-        <script type="text/javascript" src="addon/98Modified_Bitmap_prototype_decode.js"></script>
         <script type="text/javascript" src="addon/98voiceMap.js"></script>
         <script type="text/javascript" src="addon/98TTS_Accessibility.js"></script>
