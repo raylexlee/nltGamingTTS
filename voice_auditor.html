@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge TTS Voice Auditor</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 750px; margin: 20px auto; padding: 0 20px; background-color: #f4f6f9; color: #333; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 20px; }
+        h2 { margin-top: 0; padding-bottom: 8px; border-bottom: 2px solid #eaeaea; font-size: 1.2rem; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
+        select, textarea, input[type="file"] { width: 100%; padding: 10px; border: 1px solid #ccd1d9; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
+        textarea { height: 70px; resize: vertical; }
+        .btn-group { display: flex; gap: 10px; }
+        button { background-color: #0078d4; color: white; border: none; padding: 10px 15px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: 600; flex: 1; }
+        button:hover { background-color: #005a9e; }
+        button.secondary { background-color: #e1dfdd; color: #323130; }
+        button.secondary:hover { background-color: #c8c6c4; }
+        .status { font-weight: bold; color: #2b579a; margin-top: 8px; font-size: 0.9rem; }
+        .log-box { font-family: monospace; background: #f3f2f1; padding: 10px; border-radius: 4px; max-height: 200px; overflow-y: auto; font-size: 12px; border: 1px solid #e1dfdd; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: bold; margin-left: 5px; color: white; }
+        .male { background-color: #0078d4; }
+        .female { background-color: #e81123; }
+    </style>
+</head>
+<body>
+
+    <h1>Edge TTS Voice Auditor & Compiler</h1>
+    
+    <!-- STEP 1: LOAD REQUISITE DATA -->
+    <div class="card">
+        <h2>1. Load edgeVoice.txt</h2>
+        <div class="form-group">
+            <label for="fileInput">Select your space-separated edgeVoice.txt file:</label>
+            <input type="file" id="fileInput" accept=".txt">
+        </div>
+        <div id="loadStatus" class="status">Status: Waiting for edgeVoice.txt...</div>
+    </div>
+
+    <!-- STEP 2: TEST AND AUDIT -->
+    <div class="card">
+        <h2>2. Audition Cloud Profiles</h2>
+        <div class="form-group">
+            <label for="voiceSelect">Detected Voice Match:</label>
+            <select id="voiceSelect" disabled>
+                <option value="">-- Load file first --</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="textPassage">Test Passage:</label>
+            <textarea id="textPassage">Hello! My voice pattern is optimized for game dialogue generation. How does this sound?</textarea>
+        </div>
+        <div class="btn-group">
+            <button id="btnSpeak">🔊 Speak Test</button>
+            <button id="btnStop" class="secondary">⏹ Stop</button>
+        </div>
+    </div>
+
+    <!-- STEP 3: LOG PREFERENCES -->
+    <div class="card">
+        <h2>3. Assign Character & Add Comment</h2>
+        <div class="form-group">
+            <label for="voiceComment">Game Character Assignment / Notes:</label>
+            <textarea id="voiceComment" placeholder="e.g., Assigned to character: Michael. Sounds mature. Set pitch to 0.95"></textarea>
+        </div>
+        <div class="btn-group">
+            <button id="btnSave" style="background-color: #107c41;">💾 Save Assignment</button>
+            <button id="btnExport" class="secondary" style="border: 1px solid #107c41; color: #107c41;">📋 Export Compiler JSON</button>
+        </div>
+    </div>
+
+    <!-- STEP 4: STORAGE VIEW -->
+    <div class="card">
+        <h2>Active Compiler Registry</h2>
+        <div id="logBox" class="log-box">No assignments saved yet.</div>
+    </div>
+
+<script>
+    let browserVoices = [];
+    let parsedVoices = []; // Array of { name: "Ana", gender: "Female" }
+
+    const fileInput = document.getElementById('fileInput');
+    const voiceSelect = document.getElementById('voiceSelect');
+    const textPassage = document.getElementById('textPassage');
+    const voiceComment = document.getElementById('voiceComment');
+    const loadStatus = document.getElementById('loadStatus');
+    const logBox = document.getElementById('logBox');
+
+    function updateBrowserVoices() {
+        browserVoices = window.speechSynthesis.getVoices();
+        if (parsedVoices.length > 0) {
+            crossReferenceVoices();
+        }
+    }
+
+    if (typeof speechSynthesis !== 'undefined') {
+        speechSynthesis.onvoiceschanged = updateBrowserVoices;
+        updateBrowserVoices();
+    }
+
+    // Process your edgeVoice.txt file format ("Name Gender")
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            parsedVoices = evt.target.result.split(/[\r\n]+/)
+                .map(line => line.trim())
+                .filter(line => line.length > 0)
+                .map(line => {
+                    const parts = line.split(/\s+/);
+                    return {
+                        name: parts[0],
+                        gender: parts[1] || 'Unknown'
+                    };
+                });
+            
+            loadStatus.innerText = `Parsed ${parsedVoices.length} voice definitions. Matching with live browser engines...`;
+            crossReferenceVoices();
+        };
+        reader.readAsText(file);
+    });
+
+    function crossReferenceVoices() {
+        if (!browserVoices.length) {
+            loadStatus.innerText = "Browser voice engines not ready yet. Please click the page or wait.";
+            return;
+        }
+
+        voiceSelect.innerHTML = '';
+        let matchCount = 0;
+
+        parsedVoices.forEach(voiceItem => {
+            // Find browser voice where the name tokens include our short name
+            const foundVoice = browserVoices.find(v => {
+                const parts = v.name.split(/[\s-]+/);
+                return parts.includes(voiceItem.name) || v.name.includes(voiceItem.name);
+            });
+
+            if (foundVoice) {
+                const option = document.createElement('option');
+                option.value = foundVoice.name;
+                // Keep track of metadata inside custom data attributes
+                option.setAttribute('data-shortname', voiceItem.name);
+                option.setAttribute('data-gender', voiceItem.gender);
+                option.textContent = `${voiceItem.name} [${voiceItem.gender}] (${foundVoice.lang})`;
+                voiceSelect.appendChild(option);
+                matchCount++;
+            }
+        });
+
+        if (matchCount > 0) {
+            voiceSelect.disabled = false;
+            loadStatus.innerText = `Matched ${matchCount} out of ${parsedVoices.length} voices successfully!`;
+            loadCurrentComment();
+        } else {
+            voiceSelect.disabled = true;
+            const option = document.createElement('option');
+            option.textContent = "-- No local browser matches found --";
+            voiceSelect.appendChild(option);
+            loadStatus.innerText = "Error: Couldn't match text file names to any installed Edge cloud voices.";
+        }
+        renderStoredLogs();
+    }
+
+    document.getElementById('btnSpeak').addEventListener('click', () => {
+        const selectedVoiceName = voiceSelect.value;
+        if (!selectedVoiceName) return;
+
+        window.speechSynthesis.cancel(); 
+
+        const utterance = new SpeechSynthesisUtterance(textPassage.value);
+        const voiceObj = browserVoices.find(v => v.name === selectedVoiceName);
+        
+        if (voiceObj) {
+            utterance.voice = voiceObj;
+            window.speechSynthesis.speak(utterance);
+        }
+    });
+
+    document.getElementById('btnStop').addEventListener('click', () => {
+        window.speechSynthesis.cancel();
+    });
+
+    voiceSelect.addEventListener('change', loadCurrentComment);
+
+    function loadCurrentComment() {
+        const selectedOpt = voiceSelect.selectedOptions[0];
+        if (!selectedOpt) return;
+        const shortName = selectedOpt.getAttribute('data-shortname');
+        
+        const savedData = localStorage.getItem(`nlt_meta_${shortName}`);
+        voiceComment.value = savedData ? JSON.parse(savedData).comment : '';
+    }
+
+    // Save configuration payload structured for easy game scripting compilation
+    document.getElementById('btnSave').addEventListener('click', () => {
+        const selectedOpt = voiceSelect.selectedOptions[0];
+        if (!selectedOpt) return;
+        
+        const shortName = selectedOpt.getAttribute('data-shortname');
+        const gender = selectedOpt.getAttribute('data-gender');
+        const fullName = selectedOpt.value;
+
+        const payload = {
+            shortName: shortName,
+            fullName: fullName,
+            gender: gender,
+            comment: voiceComment.value
+        };
+        
+        localStorage.setItem(`nlt_meta_${shortName}`, JSON.stringify(payload));
+        renderStoredLogs();
+        alert(`Saved configuration for ${shortName}!`);
+    });
+
+    function renderStoredLogs() {
+        logBox.innerHTML = '';
+        let count = 0;
+        
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.startsWith('nlt_meta_')) {
+                count++;
+                const data = JSON.parse(localStorage.getItem(key));
+                const genderClass = data.gender.toLowerCase() === 'female' ? 'female' : 'male';
+                
+                const itemDiv = document.createElement('div');
+                itemDiv.style.marginBottom = "6px";
+itemDiv.innerHTML = <strong>${data.shortName}</strong><span class="badge ${genderClass}">${data.gender}</span>: <span style="color:#555;">${data.comment || '<i>No note</i>'}</span>;logBox.appendChild(itemDiv);}}if (count === 0) logBox.innerText = "No assignments saved yet.";}// Export your compiled dataset directly to console/clipboard as clean JSONdocument.getElementById('btnExport').addEventListener('click', () => {const compiledData = {};for (let i = 0; i < localStorage.length; i++) {const key = localStorage.key(i);if (key.startsWith('nlt_meta_')) {const data = JSON.parse(localStorage.getItem(key));compiledData[data.shortName] = {gender: data.gender,fullName: data.fullName,note: data.comment};}}const jsonStr = JSON.stringify(compiledData, null, 2);console.log(jsonStr);navigator.clipboard.writeText(jsonStr).then(() => {alert("Compiled JSON copied to clipboard! You can paste this directly into your game's config variable.");}).catch(() => {alert("Failed to auto-copy. Compiled configuration printed to DevTools Console instead.");});});renderStoredLogs();

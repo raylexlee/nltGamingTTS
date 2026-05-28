@@ -6,7 +6,7 @@ Bancroft        Brian           1.00    1.00
 Bobby           Thomas          1.00    1.05   
 Brian           Brian           1.00    1.00   
 Carol           Ava             1.00    1.05   
-Chloe           Clara           1.00    0.95   
+Chloe           Sonia          1.00    0.95   
 Daemalius       Connor          0.60    0.85   
 David           Eric            1.00    1.00   
 Demon           Guy             0.60    0.85   
@@ -16,7 +16,7 @@ Ella            Emma            1.00    1.05
 Erica           Jenny           1.00    0.95   
 Evie            Libby           1.00    1.00   
 Goon            Roger           1.00    1.00   
-Hannah          Sonia          1.00    1.05   
+Hannah          Clara           1.00    1.05   
 Heather         Michelle        1.00    0.95   
 Henchman        Ryan            1.00    1.05   
 Henchwoman      Natasha         1.00    1.00   
@@ -36,7 +36,7 @@ Madalyn         Emily           1.05    1.00
 Melissa         Emma            1.05    1.05   
 Minion          Eric            0.95    1.00   
 M               Guy             0.95    1.05   
-Nellie          Liam            0.95    0.95   
+Nellie          Natasha         0.95    0.95   
 Officer         Roger           0.95    1.00   
 Paul            Ryan            0.95    1.05   
 Producer        Steffan         0.95    0.95   

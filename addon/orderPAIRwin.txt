@@ -36,7 +36,7 @@ Madalyn         Susan           1.25    1.00
 Melissa         Zira            1.25    1.05   
 Minion          George          0.75    1.00   
 M               Mark            0.75    1.05   
-Nellie          David           0.70    0.95   
+Nellie          Zira           0.70    0.95   
 Officer         George          0.70    1.00   
 Paul            Mark            0.70    1.05   
 Producer        David           0.65    0.95   
