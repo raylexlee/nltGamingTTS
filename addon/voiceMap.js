@@ -10,7 +10,7 @@ window.nlt_isDatabaseLoaded = false;
 async function initNTLperson(gametag) {
     try {
         console.log(`🎙️ [nltGamingTTS] 正在載入 ${gametag} 的語音對應表...`);
-const dev = (navigator.userAgentData.platform === 'macOS') ? 'osx' : 'win'
+const dev = (navigator.platform === 'win32') ? 'win' : 'osx'
         const [localRes, cloudRes, actorRes] = await Promise.all([
             fetch(`addon/${gametag}PAIR${dev}.txt`),
             fetch(`addon/${gametag}PAIRedge.txt`),
@@ -63,7 +63,7 @@ const dev = (navigator.userAgentData.platform === 'macOS') ? 'osx' : 'win'
 
         // 初始化 UI 預設女聲
         const allVoices = speechSynthesis.getVoices();
-        window.defaultSystemVoice = allVoices.find(v => v.name.includes('Aria') || v.name.includes('Zira') || v.name.includes('Hazel')) || allVoices[0];
+        window.defaultSystemVoice = allVoices.find(v => v.name.includes('Aria') || v.name.includes('Zira') || v.name.includes('Karen')) || allVoices[0];
         
         window.nlt_isDatabaseLoaded = true;
         console.log(`✅ [nltGamingTTS] 混合資料庫建置完成！共載入 ${Object.keys(window.nltPerson).length} 個角色。`);
