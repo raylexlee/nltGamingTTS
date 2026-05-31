@@ -1,0 +1,43 @@
+Albert              en_US    # Hello! My name is Albert.
+Aman                en_IN    # Hello! My name is Aman.
+Bad News            en_US    # Hello! My name is Bad News.
+Bahh                en_US    # Hello! My name is Bahh.
+Bells               en_US    # Hello! My name is Bells.
+Boing               en_US    # Hello! My name is Boing.
+Bubbles             en_US    # Hello! My name is Bubbles.
+Cellos              en_US    # Hello! My name is Cellos.
+Daniel              en_GB    # Hello! My name is Daniel.
+Wobble              en_US    # Hello! My name is Wobble.
+Eddy (英文（英國）)       en_GB    # Hello! My name is Eddy.
+Eddy (英文（美國）)       en_US    # Hello! My name is Eddy.
+Flo (英文（英國）)        en_GB    # Hello! My name is Flo.
+Flo (英文（美國）)        en_US    # Hello! My name is Flo.
+Fred                en_US    # Hello! My name is Fred.
+Good News           en_US    # Hello! My name is Good News.
+Grandma (英文（英國）)    en_GB    # Hello! My name is Grandma.
+Grandma (英文（美國）)    en_US    # Hello! My name is Grandma.
+Grandpa (英文（英國）)    en_GB    # Hello! My name is Grandpa.
+Grandpa (英文（美國）)    en_US    # Hello! My name is Grandpa.
+Jester              en_US    # Hello! My name is Jester.
+Junior              en_US    # Hello! My name is Junior.
+Karen               en_AU    # Hello! My name is Karen.
+Kathy               en_US    # Hello! My name is Kathy.
+Moira               en_IE    # Hello! My name is Moira.
+Organ               en_US    # Hello! My name is Organ.
+Superstar           en_US    # Hello! My name is Superstar.
+Ralph               en_US    # Hello! My name is Ralph.
+Reed (英文（英國）)       en_GB    # Hello! My name is Reed.
+Reed (英文（美國）)       en_US    # Hello! My name is Reed.
+Rishi               en_IN    # Hello! My name is Rishi.
+Rocko (英文（英國）)      en_GB    # Hello! My name is Rocko.
+Rocko (英文（美國）)      en_US    # Hello! My name is Rocko.
+Samantha            en_US    # Hello! My name is Samantha.
+Sandy (英文（英國）)      en_GB    # Hello! My name is Sandy.
+Sandy (英文（美國）)      en_US    # Hello! My name is Sandy.
+Shelley (英文（英國）)    en_GB    # Hello! My name is Shelley.
+Shelley (英文（美國）)    en_US    # Hello! My name is Shelley.
+Tara                en_IN    # Hello! My name is Tara.
+Tessa               en_ZA    # Hello! My name is Tessa.
+Trinoids            en_US    # Hello! My name is Trinoids.
+Whisper             en_US    # Hello! My name is Whisper.
+Zarvox              en_US    # Hello! My name is Zarvox.
