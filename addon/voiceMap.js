@@ -10,9 +10,9 @@ window.nlt_isDatabaseLoaded = false;
 async function initNTLperson(gametag) {
     try {
         console.log(`🎙️ [nltGamingTTS] 正在載入 ${gametag} 的語音對應表...`);
-
+const dev = (navigator.userAgentData.platform === 'macOS') ? 'osx' : 'win'
         const [localRes, cloudRes, actorRes] = await Promise.all([
-            fetch(`addon/${gametag}PAIRwin.txt`),
+            fetch(`addon/${gametag}PAIR${dev}.txt`),
             fetch(`addon/${gametag}PAIRedge.txt`),
             fetch(`addon/${gametag}_shMATCHactor.txt`)
         ]);
@@ -142,7 +142,7 @@ function getJustInTimeVoice(charName) {
 
     // 使用全等比較防範 Sam/Samuel 誤傷
     if (!target.voice && target.name) {
-        target.voice = allVoices.find(v => v.name.split(' ')[1] === target.name) || null;
+        target.voice = allVoices.find(v => v.name.split(' ').includes(target.name)) || null;
     }
     return target; // 內含真實 voice, pitch, rate
 }
