@@ -1,9 +1,7 @@
-Ana Female
 Andrew Male
 Aria Female
 Ava Female
 Brian Male
-Christopher Male
 Clara Female
 Connor Male
 Emily Female

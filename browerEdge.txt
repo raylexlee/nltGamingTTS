@@ -5,7 +5,6 @@ Alfie Male
 Alloy Male
 Amanda Female
 Amber Female
-Ana Female
 Andrew Male
 Annette Male
 Aria Female
@@ -15,7 +14,6 @@ Bella Female
 Brandon Male
 Brian Male
 Carly Female
-Christopher Male
 Clara Male
 Connor Male
 Cora Male
