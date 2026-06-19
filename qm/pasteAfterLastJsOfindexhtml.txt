@@ -1,0 +1,2 @@
+        <script type="text/javascript" src="addon/voiceMap.js"></script>
+        <script type="text/javascript" src="addon/TTS_Accessibility.js"></script>
