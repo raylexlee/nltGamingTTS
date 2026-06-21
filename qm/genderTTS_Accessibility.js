@@ -49,7 +49,6 @@
         initVoice--;
         }
         utterance.text = text;
-//        utterance.lang = 'en-US';
         utterance.rate = ttsRate;
 
         // Setup voice based on setting
@@ -111,5 +110,106 @@
             if (speech) speak(speech);
         }
     };
+function initNTLperson(gametag) {
+try {
+//const dev = (navigator.platform === 'win32') ? 'win' : 'osx'
+const dev = 'win'
+const JSON_FILE_NAME = `${gametag}VOICE${dev}.json`;
+    const isConsoleMode = typeof require !== 'undefined' && typeof process !== 'undefined';
+
+    if (isConsoleMode) {
+        try {
+            const fs = require('fs');
+            const path = require('path');
+            
+            const baseDir = process.cwd();
+            
+            let jsonPath = path.join(baseDir, 'addon', JSON_FILE_NAME);
+            if (!fs.existsSync(jsonPath)) {
+                jsonPath = path.join(baseDir, 'www', 'addon', JSON_FILE_NAME);
+            }
+
+            if (fs.existsSync(jsonPath)) {
+                const rawData = fs.readFileSync(jsonPath, 'utf8');
+                const parsedData = JSON.parse(rawData);
+                window.nltPerson = parsedData.nltPerson || {};
+                window.nltActor = parsedData.nltActor || {};
+          //      debugLog(`[qming] Console Load OK: ${JSON_FILE_NAME}`);
+       // debugLog(`[nltGamingTTS]  ${Object.keys(window.nltActor).length} records`);
+
+            } else {
+                console.error(`[qming] File Missing Error: Looked in ${jsonPath}`);
+            }
+        } catch (err) {
+            console.error('[qming] Console Critical Loading Interrupted:', err);
+        }
+    } else {
+        try {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "addon/" + JSON_FILE_NAME, false); 
+            xhr.send(null);
+
+            if (xhr.status === 200) {
+                const parsedData = JSON.parse(xhr.responseText);
+                window.nltPerson = parsedData.nltPerson || {};
+                window.nltActor = parsedData.nltActor || {};
+                debugLog(`[qming] Browser Load OK: ${JSON_FILE_NAME}`);
+            } else {
+                console.error(`[qming] Browser XHR Error Status: ${xhr.status}`);
+            }
+        } catch (err) {
+            console.error('[qming] Browser Critical Loading Interrupted:', err);
+        }
+    }
+
+        // σê¥σºïσîû UI ΘáÉΦ¿¡σÑ│Φü▓
+myTTSinit();
+        
+        window.nlt_isDatabaseLoaded = true;
+        debugLog(`${window.allVoices.length} voices`);
+        return true;
+    } catch (error) {
+        console.error("Γ¥î [nltGamingTTS] initNTLperson τÖ╝τöƒΘî»Φ¬ñ:", error);
+        return false;
+    }
+}
+
+
+
+// 3. Just-In-Time Φ¬₧Θƒ│τë⌐Σ╗╢τ▓╛µ║ûµ»öΦ╝âτ╢üσ«Ü
+function getJustInTimeVoice(charName) {
+    const speaker = window.nltPerson[charName];
+    if (!speaker) return null;
+    window.allVoices = speechSynthesis.getVoices();
+    if (window.allVoices.length === 0) return null;
+    const isBrowserMode = allVoices.some(v => !v.localService);
+    const target = isBrowserMode ? speaker.cloud : speaker.local;
+
+    if (!target.voice && target.name) {
+        target.voice = allVoices.find(v => v.name.split(' ').includes(target.name)) || null;
+    }
+    return target; // include voice, pitch, rate
+}
+
+// 4. σ«ëσà¿Θûïµ⌐ƒσ╝òσ░Ä
+function runNadiaSafeInit() {
+    if (window.nlt_isDatabaseLoaded) return;
+    const t = document.title.split(' ')
+    const Tag = {
+        "Lust" : "epidemic",
+        "Treasure" : "nadia",
+        "The" : "order",
+        "Symphony" : "serpent"
+    };
+    const tag = t ?  t[0] : "Symphony";
+    initNTLperson(Tag[tag]);
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    runNadiaSafeInit();
+} else {
+    window.addEventListener('DOMContentLoaded', runNadiaSafeInit);
+}
+
 })();
 
