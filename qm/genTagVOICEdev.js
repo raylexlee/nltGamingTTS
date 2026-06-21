@@ -10,6 +10,7 @@ const output = `./${gametag}VOICE${dev}.json`;
 const localText = fs.readFileSync(`./${gametag}PAIR${dev}.txt`, {encoding:'utf8', flag:'r'})
 const cloudText = fs.readFileSync(`./${gametag}PAIRedge.txt`, {encoding:'utf8', flag:'r'})
 const actorText = fs.readFileSync(`./${gametag}_shMATCHactor.txt`, {encoding:'utf8', flag:'r'})
+const genderText = fs.readFileSync(`./${gametag}Gender.txt`, {encoding:'utf8', flag:'r'})
         localText.split('\n').forEach(line => {
             const trimmed = line.trim();
             if (!trimmed || trimmed.startsWith('//')) return;
@@ -40,6 +41,11 @@ const actorText = fs.readFileSync(`./${gametag}_shMATCHactor.txt`, {encoding:'ut
                 pitch: parseFloat(pitch) || 1.0,
                 rate: parseFloat(rate) || 1.0
             };
+        });
+        genderText.split('\n').forEach(line => {
+            const [charName, gender] = line.split(' ');
+            if (!charName) return;
+            qmData.nltPerson[charName].gender = gender
         });
         actorText.split('\n').forEach(line => {
             const [sh, charName] = line.split(' ');

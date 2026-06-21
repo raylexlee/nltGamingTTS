@@ -81,11 +81,6 @@ Game_Variables.prototype.setValue = function(variableId, value) {
         let dotIndex = value.indexOf('.');
         let prefix = value.substring(0, dotIndex);
         console.log('[qming] Raw Prefix : ', prefix, prefix.slice(0,2))
-    //    const charNames = window.raylex_currentSpeakers.filter(v => v[0] === prefix[0])
-    //                                                   .filter(v => v.includes(prefix[1]))
-    //                                                   .sort()
-    //    console.log('[qming] Matching Names : ', charNames)
-    //    charName = charName[0];       
         let charName = window.nltActor[prefix.slice(0,2)];
         if (charName && typeof getJustInTimeVoice === 'function') {
             const config = getJustInTimeVoice(charName);
@@ -93,7 +88,6 @@ Game_Variables.prototype.setValue = function(variableId, value) {
                 window.currentActiveVoice = config.voice;
                 window.currentActivePitch = config.pitch || 1.0;
                 window.currentActiveRate = config.rate || 1.0;
-                console.log(`🎯 [音軌鎖定] 角色: ${charName} -> 語音通道: ${config.voice.name}`);
             }
         }
     }
