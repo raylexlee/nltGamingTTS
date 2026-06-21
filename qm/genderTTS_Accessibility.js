@@ -1,5 +1,9 @@
 (function() {
     // Default voices
+    window.raylex_regex = /^[A-Z][a-z][A-Z][a-z]/ ; 
+    if (document.title && (document.title.slice(0,4) === 'Lust')) { 
+        window.raylex_regex = /^[A-Z][a-z],[a-z][a-z],[a-z]/
+    } 
     const edgeMale = 'Ryan';
     const edgeFemale = 'Emma';
     const googleMale = 'Male';
@@ -7,7 +11,7 @@
     const localMale = 'David';
     const localFemale = 'Zira';
     // Default Mod 'alternate', 'male', 'female'
-    let ttsMode = 'alternate'; 
+    let ttsMode = 'male'; 
     let currentGender = 'male'; 
     let fVoice, mVoice;
     let initVoice = 3;
@@ -110,6 +114,9 @@
             if (speech) speak(speech);
         }
     };
+window.nltPerson = {};
+window.nltActor = {};
+window.nlt_isDatabaseLoaded = false;
 function initNTLperson(gametag) {
 try {
 //const dev = (navigator.platform === 'win32') ? 'win' : 'osx'
@@ -162,11 +169,9 @@ const JSON_FILE_NAME = `${gametag}VOICE${dev}.json`;
         }
     }
 
-        // σê¥σºïσîû UI ΘáÉΦ¿¡σÑ│Φü▓
-myTTSinit();
         
         window.nlt_isDatabaseLoaded = true;
-        debugLog(`${window.allVoices.length} voices`);
+       // debugLog(`${window.allVoices.length} voices`);
         return true;
     } catch (error) {
         console.error("Γ¥î [nltGamingTTS] initNTLperson τÖ╝τöƒΘî»Φ¬ñ:", error);
@@ -180,9 +185,10 @@ myTTSinit();
 function getJustInTimeVoice(charName) {
     const speaker = window.nltPerson[charName];
     if (!speaker) return null;
-    window.allVoices = speechSynthesis.getVoices();
+    currentGender = speaker.gender.toLowerCase();
+    window.allVoices = window.speechSynthesis.getVoices();
     if (window.allVoices.length === 0) return null;
-    const isBrowserMode = allVoices.some(v => !v.localService);
+    const isBrowserMode = window.allVoices.some(v => !v.localService);
     const target = isBrowserMode ? speaker.cloud : speaker.local;
 
     if (!target.voice && target.name) {
@@ -191,7 +197,6 @@ function getJustInTimeVoice(charName) {
     return target; // include voice, pitch, rate
 }
 
-// 4. σ«ëσà¿Θûïµ⌐ƒσ╝òσ░Ä
 function runNadiaSafeInit() {
     if (window.nlt_isDatabaseLoaded) return;
     const t = document.title.split(' ')
@@ -211,5 +216,19 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     window.addEventListener('DOMContentLoaded', runNadiaSafeInit);
 }
 
+// ⚙️ 1. 變數設定攔截器 (只更新音軌指針，不發聲)
+// ==================================================
+const _original_Game_Variables_setValue = Game_Variables.prototype.setValue;
+Game_Variables.prototype.setValue = function(variableId, value) {
+    _original_Game_Variables_setValue.apply(this, arguments);
+    if ((variableId === 21)  && typeof value === 'string' && value.match(window.raylex_regex)) {
+        let charName = window.nltActor[value.slice(0,2)];
+// debugLog(`setVariable 21 "${value}" ${charName}`);
+        if (charName && typeof getJustInTimeVoice === 'function') {
+        //    const config = getJustInTimeVoice(charName);
+           currentGender = window.nltPerson[charName].gender.toLowerCase();
+        }
+    }
+};
 })();
 
