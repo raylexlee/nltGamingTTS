@@ -5,6 +5,7 @@ Ba Baako
 Be Baako
 Cf Cleo
 Da Daniel
+Di Divya 
 Ec Edmund
 Em Empusa 
 Fe Athena
@@ -13,9 +14,10 @@ Fr Amira
 Gr Grace
 Ha Amira
 Hu Rioter
+Ke Kelli 
 Ju Julia
 Le Leila
-Ln Leila
+Ln Leon 
 Lo Lola
 Ma Madison
 Mc Mc
