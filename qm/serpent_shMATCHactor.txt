@@ -6,6 +6,7 @@ Be Baako
 Cf Cleo
 Da Daniel
 Ec Edmund
+Em Empusa 
 Fe Athena
 Fl Nun
 Fr Amira
@@ -19,6 +20,7 @@ Lo Lola
 Ma Madison
 Mc Mc
 Mg Margaret
+Ol Olivia
 Pa Police
 Sa Serpent
 Sh Serpent
