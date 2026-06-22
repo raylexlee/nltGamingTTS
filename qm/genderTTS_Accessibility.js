@@ -1,4 +1,46 @@
 (function() {
+// ==========================================================
+// ΘÆêσ»╣ Console µ╝öτñ║τëêτÜäΣ╕ôσ▒₧τë⌐τÉåµùÑσ┐ùΦ░âΦ»òµ¿íσ¥ù (100% Φºúσå│ null µèÑΘöÖ)
+// ==========================================================
+let debugLog = function(message) { }; 
+
+const isConsoleMode = typeof require !== 'undefined' && typeof process !== 'undefined';
+
+if (isConsoleMode) {
+    try {
+        const fs = require('fs');
+        const path = require('path');
+
+        const baseLogDir = process.cwd();
+        const logPath = path.join(baseLogDir, 'tts_debug_log.txt');
+
+        fs.writeFileSync(logPath, '--- [qming] TTS Addon Log Started ---\n', 'utf8');
+
+        debugLog = function(message) {
+            try {
+                const timestamp = new Date().toISOString();
+                const cleanMessage = typeof message === 'object' ? JSON.stringify(message, null, 2) : message;
+                
+                fs.appendFileSync(logPath, `[${timestamp}] ${cleanMessage}\n`, 'utf8');
+            } catch (writeErr) {
+            }
+        };
+
+
+    } catch (bootErr) {
+        console.error('µùÑσ┐ùµ¿íσ¥ùσ╝òσ»╝σñ▒Φ┤Ñ: ', bootErr);
+    }
+} else {
+    debugLog = function(message) {
+        if (typeof message === 'object') {
+            console.log('[qming] Debug Object:', message);
+        } else {
+            console.log('[qming] ' + message);
+        }
+    };
+}
+
+
     // Default voices
     window.raylex_regex = /^[A-Z][a-z][A-Z][a-z]/ ; 
     if (document.title && (document.title.slice(0,4) === 'Lust')) { 
@@ -36,7 +78,8 @@
             ttsMode = 'female';
             currentGender = 'female';
         } else if (key === 'a') {
-            ttsMode = 'alternate';
+          const voices = synth.getVoices();
+          debugLog(`Now we have ${voices.length} voices`);
         }
     });
 
@@ -171,7 +214,6 @@ const JSON_FILE_NAME = `${gametag}VOICE${dev}.json`;
 
         
         window.nlt_isDatabaseLoaded = true;
-       // debugLog(`${window.allVoices.length} voices`);
         return true;
     } catch (error) {
         console.error("Γ¥î [nltGamingTTS] initNTLperson τÖ╝τöƒΘî»Φ¬ñ:", error);
@@ -223,7 +265,7 @@ Game_Variables.prototype.setValue = function(variableId, value) {
     _original_Game_Variables_setValue.apply(this, arguments);
     if ((variableId === 21)  && typeof value === 'string' && value.match(window.raylex_regex)) {
         let charName = window.nltActor[value.slice(0,2)];
-// debugLog(`setVariable 21 "${value}" ${charName}`);
+ debugLog(`setVariable 21 "${value}" ${charName}`);
         if (charName && typeof getJustInTimeVoice === 'function') {
         //    const config = getJustInTimeVoice(charName);
            currentGender = window.nltPerson[charName].gender.toLowerCase();
