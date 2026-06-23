@@ -17,6 +17,8 @@ Hl Hero
 Ka Kaley
 Ja Janet
 Je Jessica
+Ji Jim
+Jo Joey
 Ma Madalyn
 Mi Michael
 Ml Maddy
@@ -29,5 +31,7 @@ Sh Simon
 Sm Simon
 So Sofia
 Ta Tasha
+Va Valerie
+Vl Vlad
 Vo Valerie
 Wo Corn
