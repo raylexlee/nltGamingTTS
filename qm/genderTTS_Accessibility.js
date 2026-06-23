@@ -103,7 +103,7 @@ if (isConsoleMode) {
 if (currentSpeaker) {
     const objPerson = window.nltPerson[currentSpeaker];
     const objVoice = isBrowserMode ? objPerson.cloud : objPerson.local;
-    currentGener = objPerson.gender;
+    currentGener = objPerson.gender.toLowerCase();
     const name = objVoice.name;
     if (name in ttsVoice) {
        objVoice.voice = ttsVoice[name]
