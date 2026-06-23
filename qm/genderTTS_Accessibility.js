@@ -41,11 +41,11 @@ if (isConsoleMode) {
 }
 
 
-    // Default voices
     window.raylex_regex = /^[A-Z][a-z][A-Z][a-z]/ ; 
     if (document.title && (document.title.slice(0,4) === 'Lust')) { 
         window.raylex_regex = /^[A-Z][a-z],[a-z][a-z],[a-z]/
     } 
+    let allVoices, isBrowserMode; 
     const edgeMale = 'Ryan';
     const edgeFemale = 'Emma';
     const googleMale = 'Male';
@@ -56,7 +56,9 @@ if (isConsoleMode) {
     let ttsMode = 'male'; 
     let currentGender = 'male'; 
     let fVoice, mVoice;
+    let currentSpeaker = '';
     let initVoice = 3;
+    const ttsVoice = {};
     const ttsRate = 1.1;
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance('raylexlee');
@@ -78,26 +80,43 @@ if (isConsoleMode) {
             ttsMode = 'female';
             currentGender = 'female';
         } else if (key === 'a') {
-          const voices = synth.getVoices();
-          debugLog(`Now we have ${voices.length} voices`);
+          debugLog(`Now we have ${allVoices.length} voices`);
         }
     });
 
     // --- 2. Speak execuation and auto flip gender ---
     const speak = function(text) {
+
         if (!text || text.trim().length === 0) return;
         synth.cancel();
         if (initVoice !== 0) {
-            const voices = synth.getVoices();
-            const mCloud = voices.find(v => v.name.includes(edgeMale) || v.name.includes(googleMale));
-            mVoice = mCloud ? mCloud : voices.find(v => v.name.includes(localMale));
-            const fCloud = voices.find(v => v.name.includes(edgeFemale) || v.name.includes(googleFemale));
-            fVoice = fCloud ? fCloud : voices.find(v => v.name.includes(localFemale));
+            allVoices = synth.getVoices();
+            isBrowserMode = allVoices.some(v => !v.localService);
+            const mCloud = allVoices.find(v => v.name.includes(edgeMale) || v.name.includes(googleMale));
+            mVoice = mCloud ? mCloud : allVoices.find(v => v.name.includes(localMale));
+            const fCloud = allVoices.find(v => v.name.includes(edgeFemale) || v.name.includes(googleFemale));
+            fVoice = fCloud ? fCloud : allVoices.find(v => v.name.includes(localFemale));
         initVoice--;
         }
         utterance.text = text;
         utterance.rate = ttsRate;
-
+if (currentSpeaker) {
+    const objPerson = window.nltPerson[currentSpeaker];
+    const objVoice = isBrowserMode ? objPerson.cloud : objPerson.local;
+    currentGener = objPerson.gender;
+    const name = objVoice.name;
+    if (name in ttsVoice) {
+       objVoice.voice = ttsVoice[name]
+    } else {
+        objVoice.voice = allVoices.find(v => v.name.includes(name));
+        if (objVoice.voice) ttsVoice[name] = objVoice.voice;     
+    }
+    const sVoice = objVoice.voice;
+    if (objVoice.voice) { 
+        utterance.voice = objVoice.voice;
+        utterance.pitch = objVoice.pitch;
+        utterance.rate = objVoice.rate;
+     } else {
         // Setup voice based on setting
         if (currentGender === 'female') {
             utterance.voice = fVoice || null;
@@ -108,6 +127,9 @@ if (isConsoleMode) {
             utterance.pitch = 0.9;
             utterance.rate = 1;
         }
+     } 
+   currentSpeaker = '';
+} 
 
 
         synth.speak(utterance);
@@ -223,7 +245,6 @@ const JSON_FILE_NAME = `${gametag}VOICE${dev}.json`;
 
 
 
-// 3. Just-In-Time Φ¬₧Θƒ│τë⌐Σ╗╢τ▓╛µ║ûµ»öΦ╝âτ╢üσ«Ü
 function getJustInTimeVoice(charName) {
     const speaker = window.nltPerson[charName];
     if (!speaker) return null;
@@ -266,9 +287,8 @@ Game_Variables.prototype.setValue = function(variableId, value) {
     if ((variableId === 21)  && typeof value === 'string' && value.match(window.raylex_regex)) {
         let charName = window.nltActor[value.slice(0,2)];
  debugLog(`setVariable 21 "${value}" ${charName}`);
-        if (charName && typeof getJustInTimeVoice === 'function') {
-        //    const config = getJustInTimeVoice(charName);
-           currentGender = window.nltPerson[charName].gender.toLowerCase();
+        if (charName) {
+           currentSpeaker = charName; 
         }
     }
 };
