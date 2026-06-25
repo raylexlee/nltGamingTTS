@@ -1,7 +1,7 @@
 // CharacterName voiceName pitch rate
 Aged            Andrew          1.00    0.95   
 Albert          Brian           1.00    1.00   
-Alia            Sonia             1.00    0.95   
+Alia            Natasha             1.00    0.95   
 Ash             Guy     1.00    1.05   
 Bancroft        Connor          1.00    0.95   
 Bodyguard       Eric            1.00    1.00   
@@ -24,11 +24,11 @@ Jessica         Jenny           1.00    0.95
 Jess            Libby           1.00    1.00   
 Jim             Guy     0.95    1.05   
 Joey            Connor          0.95    0.95   
-Judy            Maisie          1.00    1.05   
+Judy            Sonia          1.00    1.05   
 Kaley           Michelle        1.00    0.95   
 Kat             Natasha         1.00    1.00   
-Madalyn         Sonia           1.00    1.05   
-Maddy           Sonia             1.05    0.95   
+Madalyn         Linda           1.00    1.05   
+Maddy           Linda             1.05    0.95   
 Michael         Eric            0.95    1.00   
 Naomi           Aria            1.05    1.00   
 Pricia          Ava             1.05    1.05   
