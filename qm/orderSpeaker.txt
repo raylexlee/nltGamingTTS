@@ -4,16 +4,16 @@ Arianna Female
 Bancroft Male
 Bobby Male
 Brian Male Brian
-Carol Female
+Carol Female Natasha
 Chloe Female Emily
 Daemalius Male
 David Male Thomas
 Demon Female
 Diana Female
-Duncan Male Liam
+Duncan Male Steffan
 Ella Female
 Erica Female Libby
-Evie Female
+Evie Female Natasha
 Goon Male
 Hannah Female Aria
 Heather Female Yan
@@ -34,7 +34,7 @@ Lily Female
 Madalyn Female
 Melissa Female Emma
 Minion Male
-M Male Ryan
+M Male William
 Nellie Female Ava
 Officer Male
 Paul Male Connor

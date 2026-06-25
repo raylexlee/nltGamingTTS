@@ -1,5 +1,5 @@
 Alia Female
-Andrea Male
+Andrea Female
 Arianna Female
 Bancroft Male
 Bobby Male
@@ -23,8 +23,8 @@ Henry Male
 H Male
 Hood Male
 Jon Male
-Judge Female
-Judy Male
+Judge Male
+Judy Female
 Kimberly Female
 Larry Male
 Lawyer Male

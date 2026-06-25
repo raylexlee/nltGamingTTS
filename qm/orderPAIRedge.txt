@@ -1,6 +1,6 @@
 // CharacterName voiceName pitch rate
 Alia            Aria            1.00    0.95   
-Andrea          Andrew          1.00    0.95   
+Andrea          Linda          1.00    0.95   
 Arianna         Ava             1.00    1.00   
 Bancroft        Brian           1.00    1.00   
 Bobby           Connor          1.00    1.05   
@@ -13,11 +13,11 @@ Demon           Emma            0.60    0.85
 Diana           Jenny           1.00    1.05   
 Duncan          Liam            1.00    1.05   
 Ella            Libby           1.00    0.95   
-Erica           Maisie          1.00    1.00   
+Erica           Libby          1.00    1.00   
 Evie            Michelle        1.00    1.05   
 Goon            Roger           1.00    0.95   
 Hannah          Natasha         1.00    0.95   
-Heather         Sonia           1.00    1.00   
+Heather         Yan           1.00    1.00   
 Henchman        Ryan            1.00    1.00   
 Henchwoman      Aria            1.05    0.95   
 Henry           Steffan         1.00    1.05   
@@ -25,8 +25,8 @@ H               Thomas          1.00    0.95
 Hood            William         1.00    1.00   
 Jon             Andrew          0.95    0.95   
 Judge           Ava             1.05    1.00   
-Judy            Brian           0.95    1.00   
-Kimberly        Clara           1.05    1.05   
+Judy            Sonia           0.95    1.00   
+Kimberly        Molly           1.05    1.05   
 Larry           Connor          0.95    1.05   
 Lawyer          Eric            0.95    0.95   
 Lilith          Emily           1.05    0.95   
