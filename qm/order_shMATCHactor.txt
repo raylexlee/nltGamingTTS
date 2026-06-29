@@ -25,7 +25,8 @@ Ho Hood
 Hr Henry
 Hu Henchwoman
 Jo Jon
-Ju Judge
+Jd Judge
+Ju Judy
 Ki Kimberly
 La Larry
 Li Lilith

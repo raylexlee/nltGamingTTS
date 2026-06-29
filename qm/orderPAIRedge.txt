@@ -20,7 +20,7 @@ Hannah          Natasha         1.00    0.95
 Heather         Yan           1.00    1.00   
 Henchman        Ryan            1.00    1.00   
 Henchwoman      Aria            1.05    0.95   
-Henry           Steffan         1.00    1.05   
+Henry           William         1.00    1.05   
 H               Thomas          1.00    0.95   
 Hood            William         1.00    1.00   
 Jon             Andrew          0.95    0.95   
@@ -39,7 +39,7 @@ M               Liam            0.95    1.05
 Nellie          Michelle        1.05    1.05   
 Officer         Roger           0.95    0.95   
 Paul            Ryan            0.95    1.00   
-Producer        Steffan         0.95    1.05   
+Producer        William         0.95    1.05   
 Security        Thomas          0.95    0.95   
 Simon           William         0.95    1.00   
 Smithfield      Andrew          0.90    0.95   
