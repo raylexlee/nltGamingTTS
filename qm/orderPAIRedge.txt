@@ -16,7 +16,7 @@ Ella            Libby           1.00    0.95
 Erica           Libby          1.00    1.00   
 Evie            Michelle        1.00    1.05   
 Goon            Roger           1.00    0.95   
-Hannah          Natasha         1.00    0.95   
+Hannah          Natasha         1.00    1.00   
 Heather         Yan           1.00    1.00   
 Henchman        Ryan            1.00    1.00   
 Henchwoman      Aria            1.05    0.95   
@@ -30,7 +30,7 @@ Kimberly        Molly           1.05    1.05
 Larry           Connor          0.95    1.05   
 Lawyer          Eric            0.95    0.95   
 Lilith          Emily           1.05    0.95   
-Lillian         Emma            1.05    1.00   
+Lillian         Jenny            1.05    1.00   
 Lily            Jenny           1.05    1.05   
 Madalyn         Libby           1.05    0.95   
 Melissa         Emma          1.05    1.00   

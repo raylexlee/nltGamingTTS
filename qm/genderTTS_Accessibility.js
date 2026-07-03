@@ -245,20 +245,6 @@ const JSON_FILE_NAME = `${gametag}VOICE${dev}.json`;
 
 
 
-function getJustInTimeVoice(charName) {
-    const speaker = window.nltPerson[charName];
-    if (!speaker) return null;
-    currentGender = speaker.gender.toLowerCase();
-    window.allVoices = window.speechSynthesis.getVoices();
-    if (window.allVoices.length === 0) return null;
-    const isBrowserMode = window.allVoices.some(v => !v.localService);
-    const target = isBrowserMode ? speaker.cloud : speaker.local;
-
-    if (!target.voice && target.name) {
-        target.voice = allVoices.find(v => v.name.split(' ').includes(target.name)) || null;
-    }
-    return target; // include voice, pitch, rate
-}
 
 function runNadiaSafeInit() {
     if (window.nlt_isDatabaseLoaded) return;
