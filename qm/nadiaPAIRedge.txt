@@ -4,7 +4,7 @@ Albert          Brian           1.00    1.00
 Alia            Natasha             1.00    0.95   
 Ash             Guy     1.00    1.05   
 Bancroft        Connor          1.00    0.95   
-Bodyguard       Eric            1.00    1.00   
+Bodyguard       James            1.00    1.00   
 Brad            Guy             1.00    1.05   
 Bully           Liam            1.00    0.95   
 Clare           Aria            1.00    1.00   
