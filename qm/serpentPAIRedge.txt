@@ -15,7 +15,7 @@ Daniel          Guy             1.00    1.00
 Demon           Michelle        0.60    0.85   
 Divya           Natasha         1.00    0.95   
 Edmund          Liam            1.00    1.05   
-Elijah          Roger           1.00    0.95   
+Elijah          Liam           1.00    0.95   
 Empusa          Sonia           1.00    1.00   
 Ethan           Ryan            1.00    1.00   
 Gang            Steffan         1.00    1.05   
