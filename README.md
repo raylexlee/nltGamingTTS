@@ -49,14 +49,14 @@ YourGame/
 └── www/
     ├── index.html
     └── addon/
-        ├── Modified_Bitmap_prototype_decode.js   <-- Asset Interceptor
-        ├── voiceMap.js                           <-- Configuration Map
-        ├── TTS_Accessibility.js                  <-- Core Playback Engine
-        ├── nadiaPAIRwin.txt                      <-- Local Matrix Table
-        └── nadiaPAIRedge.txt                     <-- Cloud Matrix Table
+        ├── genderTTS_Accessibility.js   <-- Core Playback Engine
+        ├── epidemicVOICEwin.json        <-- For "Lust Epidemic" 
+        ├── nadiaVOICEwin.json           <-- For "Treasure of Nadia" 
+        ├── orderVOICEwin.json           <-- For "The Genesis Order" 
+        └── serpentVOICEwin.json         <-- For "Symphony of the Serpent Demo" 
 ```
 
-### 2. Script Injection Stack
+### 2a. Script Injection Stack for epidemic,nadia and order
 Open your game's root `www/index.html` file in any text editor. Scroll to the bottom of the script stack and inject the addon scripts **sequentially, right after the core engine setup**:
 
 ```html
@@ -66,9 +66,7 @@ Open your game's root `www/index.html` file in any text editor. Scroll to the bo
 <!-- ================================================== -->
 <!-- Injected nltGamingTTS Addon Modules                -->
 <!-- ================================================== -->
-<script type="text/javascript" src="addon/Modified_Bitmap_prototype_decode.js"></script>
-<script type="text/javascript" src="addon/voiceMap.js"></script>
-<script type="text/javascript" src="addon/TTS_Accessibility.js"></script>
+<script type="text/javascript" src="addon/genderTTS_Accessibility.js"></script>
 <!-- ================================================== -->
 
 <!-- Remaining native scripts continue below unchanged -->
@@ -76,6 +74,11 @@ Open your game's root `www/index.html` file in any text editor. Scroll to the bo
 <script type="text/javascript" src="js/rpg_objects.js"></script>
 ```
 
+### 2b. Script Injection for serpent (Symphony of the Serpent)
+index.html resides in the game's root directory. Use an editor to open js/main.js and locate const scriptUrls = at the very top, Insert ,"addon/genderTTS_Accessibility.js" after "js/plugins.js" . Save the file and exit.
+Use the editor to opne js/plugins.js, locate a line like {"name":"SavesInUserDir","status":true,"description":"...", "parameters":{...}}
+Replace "status":true by "status":false .  Save and exit. 
+You have to click at the very start of game to avoid the audio error.
 ---
 
 ## 📋 Generating Your Custom Voice Matrix Maps
