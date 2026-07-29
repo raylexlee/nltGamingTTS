@@ -3,6 +3,7 @@ Agrat           Aria            1.00    0.95
 Alexander       Andrew          1.00    0.95   
 Amira           Linda             1.00    1.00   
 Angel           Clara           1.00    1.05   
+Amanda          Molly           1.00    0.95   
 Anya            Emily           1.00    0.95   
 Athena          Emma            1.00    1.00   
 Autumn          Jenny           1.00    1.05   
