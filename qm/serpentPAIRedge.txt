@@ -7,7 +7,7 @@ Amanda          Molly           1.00    0.95
 Anya            Emily           1.00    0.95   
 Athena          Emma            1.00    1.00   
 Autumn          Jenny           1.00    1.05   
-Baako           Brian           1.00    1.00   
+Baako           Roger           1.00    1.00   
 Bancroft        Connor          1.00    1.05   
 Bodygaurd       Eric            1.00    0.95   
 Cleo            Libby           1.00    0.95   
@@ -15,7 +15,7 @@ Cleopatra       Maisie          1.00    1.00
 Daniel          Guy             1.00    1.00   
 Demon           Michelle        0.60    0.85   
 Divya           Natasha         1.00    0.95   
-Edmund          Liam            1.00    1.05   
+Edmund          Sean            1.00    1.05   
 Elijah          Liam           1.00    0.95   
 Empusa          Sonia           1.00    1.00   
 Ethan           Ryan            1.00    1.00   
@@ -32,8 +32,8 @@ Leon            Connor          0.95    1.05
 Lillian         Emma            1.05    1.00   
 Lola            Jenny           1.05    1.05   
 Lucy            Libby           1.05    0.95   
-Madison         Catherine          1.05    1.00   
-Margaret        Michelle        1.05    1.05   
+Madison         Michelle        1.05    1.00   
+Margaret        Susan           1.05    1.05   
 Mc              William            0.95    0.95   
 Mobster         Guy             0.95    1.00   
 Nia             Natasha         1.05    0.95   
