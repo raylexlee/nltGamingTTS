@@ -10,8 +10,8 @@ Autumn          Zira            1.25    0.95
 Baako           Mark            1.00    1.00   
 Bancroft        David           0.95    0.95   
 Bodygaurd       Mark            0.95    1.00   
-Cleo            Zira            1.30    0.95   
-Cleopatra       Zira            1.35    0.95   
+Cleo            Leah            1.30    0.95   
+Cleopatra       Leah            1.35    0.95   
 Daniel          David           0.90    0.95   
 Demon           Zira            0.60    0.85   
 Divya           Zira            1.45    0.95   
