@@ -270,12 +270,16 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 const _original_Game_Variables_setValue = Game_Variables.prototype.setValue;
 Game_Variables.prototype.setValue = function(variableId, value) {
     _original_Game_Variables_setValue.apply(this, arguments);
-    if ((variableId === 21)  && typeof value === 'string' && value.match(window.raylex_regex)) {
+    if ((variableId === 21)  && typeof value === 'string') { 
+       if (value.match(window.raylex_regex)) {
         let charName = window.nltActor[value.slice(0,2)];
  debugLog(`setVariable 21 "${value}" ${charName}`);
         if (charName) {
            currentSpeaker = charName; 
         }
+       } else {
+ debugLog(`*** 21 "${value}"`);
+         }
     }
 };
 })();
