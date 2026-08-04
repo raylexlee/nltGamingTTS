@@ -2,7 +2,7 @@ Ar Agrat
 Al Alexander
 Ad Amanda
 Am Amira
-An Angel
+Ae Angel
 At Athena 
 Au Autumn 
 Ay Anya 
@@ -11,7 +11,7 @@ Bk Baako
 Cl Cleo
 Cp Cleopatra 
 Da Daniel
-De Demon 
+Dm Demon 
 Di Divya 
 Ed Edmund
 Em Empusa 
@@ -21,6 +21,7 @@ Fe Athena
 Fl Nun
 Fr Amira
 Gr Grace
+Go God
 Ha Amira
 Hu Rioter
 Ke Kelli 

@@ -13,7 +13,7 @@ Bodygaurd       Eric            1.00    0.95
 Cleo            Luna           1.00    0.95   
 Cleopatra       Luna          1.00    1.00   
 Daniel          Guy             1.00    1.00   
-Demon           Michelle        0.60    0.85   
+Demon           Michelle        1.00    1.00   
 Divya           Natasha         1.00    0.95   
 Edmund          Christopher            1.00    1.05   
 Elijah          Liam           1.00    0.95   
