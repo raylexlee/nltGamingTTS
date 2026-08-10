@@ -10,6 +10,7 @@ Autumn          Jenny           1.00    1.05
 Baako           Roger           1.00    1.00   
 Bancroft        Connor          1.00    1.05   
 Bodygaurd       Eric            1.00    0.95   
+Clare           Neerja          1.0     1.0
 Cleo            Luna           1.00    0.95   
 Cleopatra       Luna          1.00    1.00   
 Daniel          Guy             1.00    1.00   
