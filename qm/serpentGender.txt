@@ -46,4 +46,5 @@ Olivia Female
 Police Male
 Rioter Male
 Serpent Male
+Sofia Female
 Tony Male

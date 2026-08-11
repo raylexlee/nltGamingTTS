@@ -47,4 +47,5 @@ Olivia          Yan             1.10    1.00
 Police          Ryan            0.95    1.00   
 Rioter          Steffan         0.95    1.05   
 Serpent         Thomas          0.95    0.95   
+Sofia           Libby           1.0     1.0
 Tony            Eric         0.95    1.00   
