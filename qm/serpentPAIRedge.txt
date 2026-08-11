@@ -36,6 +36,7 @@ Lucy            Libby           1.05    0.95
 Madison         Michelle        1.05    1.00   
 Margaret        Leah           1.05    1.05   
 Mc              William            0.95    0.95   
+Medusa          Molly          1.0      1.0 
 Mobster         Guy             0.95    1.00   
 Nia             Natasha         1.05    0.95   
 Np              Liam            0.95    1.05   
