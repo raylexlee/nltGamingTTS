@@ -27,8 +27,8 @@ Joey            Connor          0.95    0.95
 Judy            Sonia          1.00    1.05   
 Kaley           Michelle        1.00    0.95   
 Kat             Natasha         1.00    1.00   
-Madalyn         Linda           1.00    1.05   
-Maddy           Linda             1.05    0.95   
+Madalyn         Libby           1.00    1.05   
+Maddy           Libby             1.05    0.95   
 Michael         Eric            0.95    1.00   
 Naomi           Aria            1.05    1.00   
 Pricia          Yan             1.05    1.05   

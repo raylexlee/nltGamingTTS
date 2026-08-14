@@ -1,6 +1,6 @@
 // CharacterName voiceName pitch rate
 Alia            Aria            1.00    0.95   
-Andrea          Linda          1.00    0.95   
+Andrea          Libby          1.00    0.95   
 Arianna         Ava             1.00    1.00   
 Bancroft        Brian           1.00    1.00   
 Bobby           Connor          1.00    1.05   
