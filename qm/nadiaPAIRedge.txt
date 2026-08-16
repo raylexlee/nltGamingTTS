@@ -10,7 +10,7 @@ Bully           Liam            1.00    0.95
 Clare           Aria            1.00    1.00   
 Corn            Roger           1.00    1.00   
 Diana           Ava             1.00    1.05   
-Duncan          Ryan            1.00    1.05   
+Duncan          Liam            1.00    1.05   
 Emilt           Clara           1.00    0.95   
 Emily           Emily           1.00    1.00   
 Evie            Emily           1.00    1.00   
