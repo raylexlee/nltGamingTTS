@@ -30,6 +30,7 @@ Kat             Zira            1.55    0.95
 Madalyn         Zira            1.60    0.95   
 Maddy           Zira            1.65    0.95   
 Michael         David           0.60    0.95   
+MrGarner        Mark            1.0     1.0
 Naomi           Zira            1.70    0.95   
 Pricia          Zira            1.75    0.95   
 Sam             Mark            0.60    1.00   
