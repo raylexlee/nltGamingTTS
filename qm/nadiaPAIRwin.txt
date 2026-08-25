@@ -26,7 +26,7 @@ Jim             David           0.65    0.95
 Joey            Mark            0.65    1.00   
 Judy            Zira            1.45    0.95   
 Kaley           Zira            1.50    0.95   
-Kat             Zira            1.55    0.95   
+Katherine       Zira            1.55    0.95   
 Madalyn         Zira            1.60    0.95   
 Maddy           Zira            1.65    0.95   
 Michael         David           0.60    0.95   
