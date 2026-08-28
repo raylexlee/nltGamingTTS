@@ -24,7 +24,7 @@ Henry           William         1.00    1.05
 H               Thomas          1.00    0.95   
 Hood            William         1.00    1.00   
 Jon             Andrew          0.95    0.95   
-Judge           Ava             1.05    1.00   
+Judge           Roger             1.05    1.00   
 Judy            Sonia           0.95    1.00   
 Kimberly        Molly           1.05    1.05   
 Larry           Connor          0.95    1.05   

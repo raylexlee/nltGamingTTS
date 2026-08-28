@@ -35,9 +35,11 @@ Ml Madalyn
 Mc M
 Me Melissa
 Ne Nellie
+Oa Officer
+Ob Security
 Pl Paul
 Sa Smithfield
-Sh Simon
+Sm Simon
 Ta Tasha
 Se Security
 Wo William
