@@ -1,2 +1,3 @@
 (function() {
+const window = {};
 const parsedData = 
