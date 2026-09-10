@@ -1,5 +1,6 @@
 (function() {
 const parsedData = 
+; // End of parsedData
 window.nltPerson = {};
 window.nltActor = {};
 window.nltPerson = parsedData.nltPerson || {};
