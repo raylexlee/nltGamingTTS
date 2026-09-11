@@ -2,12 +2,25 @@
 
 A collection of developer tools and scripts for nltGamingTTS. This repository allows you to generate and inject custom scripts directly into the browser's developer tools console, enabling TTS and gender features for online versions of the games.
 
+## 🎥 Gameplay & Video Tutorial
+Want to see it in action? Check out the comprehensive **30-minute gameplay and stability demonstration**:
+
+👉 **[Watch the Full Gameplay & Tutorial Video on YouTube](https://www.youtube.com/watch?v=459dnFObafY)**  
+*(Note: As these are adult games, the video is **Age-Restricted (18+)**. You will need to log into your YouTube account to watch it.)*
+
+### Video Timeline Guide:
+* **00:00** — Navigating from the nlt main site to Patreon and setting up the browser options.
+* **01:30** — Launching the game, opening DevTools (`F12`), and injecting the script.
+* **03:00 - 30:00** — Extended gameplay showcase featuring continuous dialogue to demonstrate the **long-term stability** and reliability of the injected code without audio stuttering or crashes.
+
+---
+
 ## Supported Games
 Click a link below to go directly to the raw script for easy copying:
 * **Symphony of the Serpent** — [serpent.js Raw Code](https://githubusercontent.com)
-* **Lust Epidemic** — [epidemic.js Raw Code](https://raw.githubusercontent.com/raylexlee/nltGamingTTS/refs/heads/main/devtools/epidemic.js)
-* **Treasure of Nadia** — [nadia.js Raw Code](https://raw.githubusercontent.com/raylexlee/nltGamingTTS/refs/heads/main/devtools/nadia.js)
-* **The Genesis Order** — [order.js Raw Code](https://raw.githubusercontent.com/raylexlee/nltGamingTTS/refs/heads/main/devtools/order.js)
+* **Lust Epidemic** — [epidemic.js Raw Code](https://githubusercontent.com)
+* **Treasure of Nadia** — [nadia.js Raw Code](https://githubusercontent.com)
+* **The Genesis Order** — [order.js Raw Code](https://githubusercontent.com)
 
 ## Requirements & Compatibility
 
