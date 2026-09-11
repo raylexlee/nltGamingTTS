@@ -1,6 +1,13 @@
 # devtools
 
-A collection of developer tools and scripts for nltGamingTTS. This repository allows you to generate and inject custom scripts (like `serpent.js`) directly into the browser's developer tools console, enabling TTS and gender features for online versions of the game.
+A collection of developer tools and scripts for nltGamingTTS. This repository allows you to generate and inject custom scripts directly into the browser's developer tools console, enabling TTS and gender features for online versions of the games.
+
+## Supported Games
+Click a link below to go directly to the raw script for easy copying:
+* **Symphony of the Serpent** — [serpent.js Raw Code](https://githubusercontent.com)
+* **Lust Epidemic** — [epidemic.js Raw Code](https://raw.githubusercontent.com/raylexlee/nltGamingTTS/refs/heads/main/devtools/epidemic.js)
+* **Treasure of Nadia** — [nadia.js Raw Code](https://raw.githubusercontent.com/raylexlee/nltGamingTTS/refs/heads/main/devtools/nadia.js)
+* **The Genesis Order** — [order.js Raw Code](https://raw.githubusercontent.com/raylexlee/nltGamingTTS/refs/heads/main/devtools/order.js)
 
 ## Requirements & Compatibility
 
@@ -26,14 +33,20 @@ Using the DevTools console injection method offers several advantages over downl
 
 ## Quick Start Guide
 
-Follow these steps to generate the script and inject it into your game.
+Follow these steps to get the script and inject it into your game.
 
-### Step 1: Generate the Script
+### Option A: Use Pre-Compiled Raw Links (Easiest)
+1. Click on one of the **Raw Code** links in the [Supported Games](#supported-games) list above.
+2. Press `Ctrl + A` (or `Cmd + A` on Mac) to select all the text, then `Ctrl + C` (`Cmd + C`) to copy it.
+3. Skip directly to [Step 2: Inject into the Online Game](#step-2-inject-into-the-online-game).
+
+### Option B: Generate the Script Locally
+If you want to compile the script yourself from the JSON configurations:
 Run the built-in shell script providing the prefix name of your game (e.g., `serpent` for `serpentVOICEwin.json`):
 ```bash
 ./devtoolMake.sh serpent
 ```
-This will compile and output the executable JavaScript file (e.g., `serpent.js`).
+This will compile and output the executable JavaScript file (e.g., `serpent.js`). Open the generated file and copy its contents.
 
 ### Step 2: Inject into the Online Game
 1. Open your game on the **Patreon online game platform** using a compatible version of **Microsoft Edge**.
@@ -42,12 +55,12 @@ This will compile and output the executable JavaScript file (e.g., `serpent.js`)
 3. Open the Edge Developer Tools Console:
    * **Windows/Linux:** Press `F12` or `Ctrl + Shift + J`
    * **Mac:** Press `Cmd + Option + J`
-4. Open your generated `serpent.js` file, copy its entire contents, and paste it directly into the console.
+4. Paste the copied code directly into the console.
 5. Press `Enter` to execute.
 
 Once executed, the script will hook into the game engine and function exactly like the standard `nltGamingTTS/addon/genderTTS_*.js` plugins, fully utilizing Edge's natural voices.
 
 ## Contributing
 
-Feel free to submit pull requests or open issues if you find bugs or want to contribute new JSON configurations for other games in the lineup (e.g., `epidemic`, `nadia`, `order`).
+Feel free to submit pull requests or open issues if you find bugs or want to contribute new JSON configurations for other games.
 
